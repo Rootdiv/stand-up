@@ -9,31 +9,26 @@
   background-size: cover;
   background-position: center;
   color: #ffffff;
+  padding: 16px;
 
   &__title {
     font-size: 100px;
     font-weight: 800;
-    margin-bottom: 62px;
     line-height: 1.2;
+    margin-bottom: 47px;
   }
 
   &__info {
+    font-size: 30px;
     display: flex;
     gap: 80px;
-    margin-bottom: 47px;
-
-    &-item {
-      font-size: 30px;
-      line-height: 2;
-      display: flex;
-      gap: 8px;
-      align-items: flex-end;
-    }
+    margin-bottom: 62px;
 
     &-number {
       font-size: 80px;
       font-weight: 800;
       line-height: 1.2;
+      margin-right: 8px;
     }
   }
 
