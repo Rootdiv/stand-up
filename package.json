@@ -1,0 +1,29 @@
+{
+  "name": "stand-up",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-sort-media-queries": "^5.2.0",
+    "sass": "^1.69.5",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
