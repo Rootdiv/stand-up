@@ -21,16 +21,18 @@
           <span class="event__info-number">12</span>часов
         </div>
         <div class="event__info-item event__info-item_comedians">
-          <span class="event__info-number">15</span>комиков
+          <span class="event__info-number">0</span>комиков
         </div>
       </div>
-      <button type="button" class="event__button event__button_reserve">Забронировать места</button>
-      <button type="button" class="event__button event__button_edit">
-        Редактировать бронь
-        <svg width="24" height="24">
-          <use href="/img/sprite.svg#edit" />
-        </svg>
-      </button>
+      <div class="event__buttons">
+        <button type="button" class="event__button event__button_reserve">Забронировать места</button>
+        <button type="button" class="event__button event__button_edit">
+          Редактировать бронь
+          <svg width="24" height="24">
+            <use href="/img/sprite.svg#edit" />
+          </svg>
+        </button>
+      </div>
     </section>
     <section class="booking">
       <div class="booking__container">
@@ -48,19 +50,7 @@
           </fieldset>
           <fieldset class="booking__fieldset booking__fieldset_comedians">
             <legend class="booking__legend">Выберите комика</legend>
-            <ul class="booking__comedians-list">
-              <li class="booking__comedian">
-                <select name="comedian" class="booking__select booking__select_comedian">
-                  <option value="1">Юлия Ахмедова</option>
-                  <option value="1">Слава Комиссаренко</option>
-                </select>
-                <select name="time" class="booking__select booking__select_time">
-                  <option value="20:00">20:00</option>
-                  <option value="22:00">22:00</option>
-                </select>
-                <button type="button" class="booking__hall">Зал 1</button>
-              </li>
-            </ul>
+            <ul class="booking__comedians-list"></ul>
           </fieldset>
           <button type="submit" class="booking__button booking__button_submit">Сохранить</button>
         </form>

@@ -42,10 +42,6 @@ button {
   color: inherit;
 }
 
-select {
-  background-color: #ffffff;
-}
-
 ul {
   padding: 0;
   margin: 0;
@@ -62,4 +58,44 @@ fieldset {
   margin: 0;
   padding: 0;
   border: none;
+}
+
+.dropdown-active .ts-control {
+  border-radius: 8px;
+}
+
+.ts-dropdown,
+.ts-control,
+.ts-control input {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 16px 8px;
+
+  &::placeholder {
+    color: #bababa;
+  }
+}
+
+.ts-dropdown .option {
+  padding: 0;
+}
+
+.ts-wrapper.single .ts-control {
+  background-color: #ffffff;
+  background-image: none;
+
+  &::after {
+    margin-top: -5px;
+    border-width: 10px 7px 0 7px;
+    border-color: #1a1a1a transparent transparent transparent;
+  }
+}
+
+.ts-wrapper.single.dropdown-active .ts-control::after {
+  margin-top: -5px;
+  border-width: 0 7px 10px 7px;
+  border-color: transparent transparent #1a1a1a transparent;
 }
