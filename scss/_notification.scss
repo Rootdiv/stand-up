@@ -1,0 +1,35 @@
+.notification {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  border-radius: 16px;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  background-color: #998f00;
+  padding: 32px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(100%);
+
+  &_show {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+
+  &_success {
+    padding-right: 76px;
+    background: #00992b url('/img/check.svg') right 32px center / 36px no-repeat;
+    // background-image: url('/img/check.svg');
+    // background-position-x: right 32px;
+    // background-position-y: center;
+    // background-size: 36px;
+    // background-repeat: no-repeat;
+    // background-color: #00992b;
+  }
+
+  &_error {
+    background-color: #990000;
+  }
+}
