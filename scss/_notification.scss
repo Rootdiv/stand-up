@@ -13,6 +13,24 @@
   opacity: 0;
   transform: translateX(100%);
 
+  @media (max-width: 1024px) {
+    right: 40px;
+    bottom: 40px;
+    font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    right: 30px;
+    bottom: 30px;
+  }
+
+  @media (max-width: 680px) {
+    right: 16px;
+    bottom: 16px;
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+
   &_show {
     opacity: 100%;
     transform: translateX(0);
@@ -21,12 +39,12 @@
   &_success {
     padding-right: 76px;
     background: #00992b url('/img/check.svg') right 32px center / 36px no-repeat;
-    // background-image: url('/img/check.svg');
-    // background-position-x: right 32px;
-    // background-position-y: center;
-    // background-size: 36px;
-    // background-repeat: no-repeat;
-    // background-color: #00992b;
+  }
+
+  @media (max-width: 680px) {
+    padding-right: 56px;
+    background-position: right 24px center;
+    background-size: 24px;
   }
 
   &_error {
