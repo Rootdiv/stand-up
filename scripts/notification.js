@@ -47,7 +47,7 @@ export class Notification {
     setTimeout(() => {
       this.animationNotification(notification, false).then(() => {
         notification.remove();
-      }, this.timeout);
-    });
+      });
+    }, this.timeout);
   }
 }

@@ -10,6 +10,7 @@ const notification = Notification.getInstance();
 
 const bookingComediansList = document.querySelector('.booking__comedians-list');
 const bookingForm = document.querySelector('.booking__form');
+const bookingButtonSubmit = document.querySelector('.booking__button_submit');
 
 const createComedianBlock = comedians => {
   const bookingComedian = document.createElement('li');
@@ -64,6 +65,9 @@ const createComedianBlock = comedians => {
 
   bookingTomSelectTime.on('change', time => {
     if (!time) return;
+    if (bookingButtonSubmit.disabled) {
+      bookingButtonSubmit.disabled = false;
+    }
     const idComedian = bookingTomSelectComedian.getValue();
     const { performances } = comedians.find(item => item.id === idComedian);
     const { hall } = performances.find(item => item.time === time);
@@ -146,9 +150,16 @@ const init = async () => {
         if (!element.isValid) {
           errorMessage += `${element.errorMessage}, `;
         }
+
+        if (errorMessage) {
+          bookingButtonSubmit.disabled = true;
+        }
       }
 
       notification.show(errorMessage.slice(0, -2), false);
+    })
+    .onValidate(() => {
+      bookingButtonSubmit.disabled = false;
     });
 
   bookingForm.addEventListener('submit', event => {
@@ -169,6 +180,7 @@ const init = async () => {
 
       if (times.size !== data.booking.length) {
         notification.show('Нельзя быть в одно время на двух выступлениях', false);
+        bookingButtonSubmit.disabled = true;
       }
     });
   });

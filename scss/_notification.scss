@@ -11,7 +11,8 @@
   padding: 32px;
   z-index: 1000;
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateY(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 
   @media (max-width: 1024px) {
     right: 40px;
@@ -33,7 +34,7 @@
 
   &_show {
     opacity: 100%;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   &_success {
