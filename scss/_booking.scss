@@ -178,6 +178,8 @@
 
     &:disabled {
       background-color: #bababa;
+      border-color: transparent;
+      cursor: not-allowed;
     }
   }
 }
