@@ -1,16 +1,12 @@
 import { Notification } from './Notification';
+import { bookingComediansList, bookingButtonSubmit } from '../main';
 import Inputmask from 'inputmask';
 import JustValidate from 'just-validate';
+import { sendData } from './api';
 
 const notification = Notification.getInstance();
 
-export const initForm = (
-  bookingForm,
-  bookingButtonSubmit,
-  bookingInputFullName,
-  bookingInputPhone,
-  bookingInputTicket,
-) => {
+export const initForm = (bookingForm, bookingInputFullName, bookingInputPhone, bookingInputTicket, changeSection) => {
   const validate = new JustValidate(bookingForm, {
     errorFieldCssClass: 'booking__input_invalid',
     successFieldCssClass: 'booking__input_valid',
@@ -60,8 +56,14 @@ export const initForm = (
       bookingButtonSubmit.disabled = false;
     });
 
-  bookingForm.addEventListener('submit', event => {
+  bookingForm.addEventListener('submit', async event => {
     event.preventDefault();
+
+    if (!validate.isValid) {
+      bookingButtonSubmit.disabled = true;
+      return;
+    }
+
     const data = { booking: [] };
     const times = new Set();
 
@@ -71,18 +73,40 @@ export const initForm = (
         if (comedian && time) {
           data.booking.push({ comedian, time });
           times.add(time);
-        } else if (times.size === 0) {
-          bookingButtonSubmit.disabled = true;
-          notification.show('Необходимо выбрать выступление', false);
         }
+      } else if (field === 'phone') {
+        data.phone = value.replace(/[()-]/g, '');
       } else {
         data[field] = value;
       }
-
-      if (times.size !== data.booking.length) {
-        notification.show('Нельзя быть в одно время на двух выступлениях', false);
-        bookingButtonSubmit.disabled = true;
-      }
     });
+
+    if (times.size !== data.booking.length) {
+      notification.show('Нельзя быть в одно время на двух выступлениях', false);
+      bookingButtonSubmit.disabled = true;
+      return;
+    }
+
+    if (times.size === 0) {
+      bookingButtonSubmit.disabled = true;
+      notification.show('Необходимо выбрать комика и/или время', false);
+      return;
+    }
+
+    let isSend = false;
+    const method = bookingForm.getAttribute('method');
+    if (method === 'PATCH') {
+      isSend = await sendData(method, data, data.ticket);
+    } else {
+      isSend = await sendData(method, data);
+    }
+
+    if (isSend) {
+      notification.show('Бронь принята', true);
+      changeSection();
+      bookingForm.reset();
+      bookingButtonSubmit.disabled = false;
+      bookingComediansList.textContent = '';
+    }
   });
 };

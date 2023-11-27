@@ -10,6 +10,16 @@
   background-position: center;
   color: #ffffff;
   padding: 80px 30px 80px;
+  opacity: 100%;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0.5s;
+
+  &__hidden {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+  }
 
   @media (max-width: 680px) {
     padding: 80px 16px 60px;
@@ -78,6 +88,13 @@
   }
 
   &__button {
+    visibility: visible;
+
+    &_hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
     &_reserve {
       font-size: 24px;
       color: #1a1a1a;

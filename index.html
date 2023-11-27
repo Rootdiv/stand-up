@@ -25,8 +25,10 @@
         </div>
       </div>
       <div class="event__buttons">
-        <button type="button" class="event__button event__button_reserve">Забронировать места</button>
-        <button type="button" class="event__button event__button_edit">
+        <button type="button" class="event__button event__button_reserve event__button_hidden">
+          Забронировать места
+        </button>
+        <button type="button" class="event__button event__button_edit event__button_hidden">
           Редактировать бронь
           <svg width="24" height="24">
             <use href="/img/sprite.svg#edit" />
@@ -34,7 +36,7 @@
         </button>
       </div>
     </section>
-    <section class="booking">
+    <section class="booking booking__hidden">
       <div class="booking__container">
         <h2 class="booking__title">Забронируйте место в зале</h2>
         <form class="booking__form" method="POST">

@@ -1,7 +1,9 @@
 import TomSelect from 'tom-select';
+import { bookingComediansList, bookingButtonSubmit } from '../main';
+
 const MAX_COMEDIANS = 6;
 
-export const createComedianBlock = (comedians, bookingComediansList, bookingButtonSubmit) => {
+export const createComedianBlock = comedians => {
   const bookingComedian = document.createElement('li');
   bookingComedian.className = 'booking__comedian';
 
@@ -69,7 +71,7 @@ export const createComedianBlock = (comedians, bookingComediansList, bookingButt
 
   const createNextBookingComedian = () => {
     if (bookingComediansList.children.length < MAX_COMEDIANS) {
-      const nextComediansBlock = createComedianBlock(comedians, bookingComediansList, bookingButtonSubmit);
+      const nextComediansBlock = createComedianBlock(comedians);
       bookingComediansList.append(nextComediansBlock);
     }
     bookingTomSelectTime.off('change', createNextBookingComedian);
