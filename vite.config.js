@@ -17,6 +17,10 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      input: {
+        main: 'index.html',
+        qr: 'qr.html',
+      },
       output: {
         assetFileNames: assetInfo => {
           let extType = assetInfo.name.split('.').pop();

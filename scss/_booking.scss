@@ -33,6 +33,15 @@
     line-height: 1.2;
     margin-bottom: 50px;
 
+    &-qr {
+      grid-column: 1 / -1;
+      font-size: 34px;
+
+      @media (max-width: 680px) {
+        font-size: 30px;
+      }
+    }
+
     @media (max-width: 1024px) {
       font-size: 32px;
       margin-bottom: 40px;
@@ -41,6 +50,38 @@
     @media (max-width: 680px) {
       font-size: 24px;
       margin-bottom: 32px;
+    }
+  }
+
+  &__time {
+    margin: 7px 0;
+  }
+
+  &__list {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+
+    @media (max-width: 680px) {
+      gap: 15px;
+    }
+  }
+
+  &__client {
+    &-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+
+      @media (max-width: 768px) {
+        gap: 15px;
+      }
+    }
+
+    &-item {
+      margin: 0;
     }
   }
 

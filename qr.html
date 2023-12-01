@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/main.js"></script>
+    <title>StandUp Party Booking</title>
+  </head>
+  <body>
+    <section class="booking">
+      <div class="booking__container">
+        <h2 class="booking__title">Ваша бронь</h2>
+        <div class="booking__client-info">
+          <h3 class="booking__title-qr">Информация клиенте</h3>
+        </div>
+        <div class="booking__performances">
+          <h3 class="booking__title-qr">Список комиков</h3>
+        </div>
+        <div class="modal">
+          <div class="modal__content">
+            <canvas id="qrCanvas"></canvas>
+            <button type="button" class="modal__close">&#10006;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
