@@ -17,9 +17,7 @@ export const createComedianBlock = comedians => {
   inputHidden.name = 'booking';
   inputHidden.type = 'hidden';
 
-  const bookingHall = document.createElement('button');
-  bookingHall.className = 'booking__hall';
-  bookingHall.type = 'button';
+  const bookingHall = document.createElement('span');
 
   bookingComedian.append(bookingSelectComedian, bookingSelectTime, inputHidden);
 

@@ -1,5 +1,10 @@
 import { Notification } from './Notification';
 
+const sendError = error => {
+  console.error(`Возникла проблема с fetch запросом ${error.message}`);
+  Notification.getInstance().show('Возникла ошибка сервера, попробуйте позже', false);
+};
+
 export const getComedians = async () => {
   try {
     const response = await fetch(`${location.protocol}//${location.hostname}:2125/comedians`);
@@ -8,8 +13,7 @@ export const getComedians = async () => {
     }
     return response.json();
   } catch (error) {
-    console.error(`Возникла проблема с fetch запросом ${error.message}`);
-    Notification.getInstance().show('Возникла ошибка сервера, попробуйте зайти позже', false);
+    sendError(error);
   }
 };
 
@@ -24,8 +28,7 @@ export const getClient = async ticket => {
     }
     return response.json();
   } catch (error) {
-    console.error(`Возникла проблема с fetch запросом ${error.message}`);
-    Notification.getInstance().show('Возникла ошибка сервера, попробуйте зайти позже', false);
+    sendError(error);
   }
 };
 
@@ -46,8 +49,7 @@ export const sendData = async (method, data, id) => {
     }
     return true;
   } catch (error) {
-    console.error(`Возникла проблема с fetch запросом ${error.message}`);
-    Notification.getInstance().show('Возникла ошибка сервера, попробуйте позже', false);
+    sendError(error);
     return false;
   }
 };
