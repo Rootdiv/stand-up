@@ -1,5 +1,8 @@
 import { Notification } from './Notification';
 
+export const API_URL = 
+  import.meta.env.DEV ? 'http://localhost:2125' : 'https://api.rootdiv.ru/stand-up';
+
 const sendError = error => {
   console.error(`Возникла проблема с fetch запросом ${error.message}`);
   Notification.getInstance().show('Возникла ошибка сервера, попробуйте позже', false);
@@ -7,7 +10,7 @@ const sendError = error => {
 
 export const getComedians = async () => {
   try {
-    const response = await fetch(`${location.protocol}//${location.hostname}:2125/comedians`);
+    const response = await fetch(`${API_URL}/comedians`);
     if (!response.ok) {
       throw new Error(`Сервер вернул ошибку: ${response.status}`);
     }
@@ -19,7 +22,7 @@ export const getComedians = async () => {
 
 export const getClient = async ticket => {
   try {
-    const response = await fetch(`${location.protocol}//${location.hostname}:2125/clients/${ticket}`);
+    const response = await fetch(`${API_URL}/clients/${ticket}`);
     if (response.status === 500) {
       throw new Error(`Сервер вернул ошибку: ${response.status}`);
     } else if (response.status === 400 || response.status === 404) {
@@ -34,7 +37,7 @@ export const getClient = async ticket => {
 
 export const sendData = async (method, data, id) => {
   try {
-    const response = await fetch(`${location.protocol}//${location.hostname}:2125/clients${id ? `/${id}` : ''}`, {
+    const response = await fetch(`${API_URL}/clients${id ? `/${id}` : ''}`, {
       method,
       headers: {
         'Content-Type': 'application/json',
